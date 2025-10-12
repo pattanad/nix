@@ -29,9 +29,8 @@
               home.username = "pattanad";
               home.homeDirectory = "/Users/pattanad";
 
-              # Example: install wezterm & neovim by default
+              # Example: install packages
               home.packages = [
-                pkgs.wezterm
                 pkgs.neovim
                 pkgs.tmux
                 pkgs.git
