@@ -56,9 +56,9 @@
     coreutils ffmpeg neovim tmux direnv
     starship fzf eza bat ripgrep fd tree jq curl
     gh lazygit btop zoxide p7zip
-    clang cmake ninja nodejs_20 yarn typescript python3 uv bun
+    cmake ninja nodejs_20 yarn typescript python3 uv bun
     lua-language-server nodePackages.typescript-language-server pyright
-    clang-tools jdt-language-server kotlin-language-server
+    jdt-language-server kotlin-language-server
   ];
 
   programs.git = {
@@ -113,7 +113,7 @@
       searchcode = "rg --line-number --color=always --smart-case";
     };
     
-    initExtra = ''
+    initContent = ''
       eval "$(starship init zsh)"
       eval "$(zoxide init zsh)"
       

@@ -1,13 +1,13 @@
 { config, pkgs, ... }: {
   imports = [ ./home-shared.nix ];
 
-  home.packages = with pkgs; [ wezterm imagemagick ];
+  home.packages = with pkgs; [ wezterm imagemagick clang clang-tools ];
 
   home.shellAliases = {
     reload = "sudo darwin-rebuild switch --flake ~/.config/nixpkgs && ~/.local/bin/update-nix-context.sh";
   };
 
-  programs.zsh.initExtra = ''
+  programs.zsh.initContent = ''
     export PATH=$HOME/.toolbox/bin:$PATH
     source /Users/pattanad/.brazil_completion/zsh_completion 2>/dev/null || true
     eval "$(/opt/homebrew/bin/brew shellenv)" 2>/dev/null || true

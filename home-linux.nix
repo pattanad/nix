@@ -8,7 +8,7 @@
     reload = "home-manager switch --flake ~/.config/nixpkgs#pattanad@linux";
   };
 
-  programs.zsh.initExtra = ''
-    export PATH=$HOME/.toolbox/bin:$PATH
+  programs.zsh.initContent = ''
+    export PATH=$HOME/.toolbox/bin:/usr/bin:/usr/local/bin:$PATH
   '';
 }
