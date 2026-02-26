@@ -1,0 +1,33 @@
+{
+  "name": "encore",
+  "description": "",
+  "prompt": null,
+  "mcpServers": {},
+  "tools": [
+    "*"
+  ],
+  "toolAliases": {},
+  "toolsSettings": {
+    "fs_write": {
+      "fallbackAction": "interactive"
+    },
+    "write": {
+      "fallbackAction": "interactive"
+    }
+  },
+  "allowedTools": ["fs_read", "grep", "glob", "introspect", "report_issue", "todo_list", "use_aws", "use_subagent", "web_fetch", "web_search", "Delegate", "WorkspaceSearch", "@builder-mcp/ReadInternalWebsites", "@builder-mcp/InternalSearch", "@builder-mcp/SkillsTool", "@builder-mcp/InternalCodeSearch", "@builder-mcp/BrazilBuildAnalyzerTool"],
+  "resources": [
+    "file://AGENTS.md",
+    "file://README.md"
+  ],
+  "hooks": {
+    "agentSpawn": [
+      {
+        "command": "cat ~/.nix-environment-context.md; echo; echo '## Runbooks'; for f in ~/.local/share/runbooks/*.md; do [ -f \"$f\" ] && echo \"### $(basename \"$f\" .md)\" && cat \"$f\" && echo; done",
+        "cache_ttl_seconds": 3600
+      }
+    ]
+  },
+  "useLegacyMcpJson": true,
+  "model": null
+}

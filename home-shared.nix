@@ -61,6 +61,9 @@
     jdt-language-server kotlin-language-server
   ];
 
+  home.file.".kiro/settings/cli.json".source = ./kiro/settings/cli.json;
+  home.file.".kiro/agents/encore.json".source = ./kiro/agents/encore.json;
+
   programs.git = {
     enable = true;
     settings = {
