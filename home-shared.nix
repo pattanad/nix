@@ -9,6 +9,7 @@
     ll = "eza -l";
     la = "eza -la";
     lt = "eza --tree";
+    ltr = "eza -l --sort=modified";
     gs = "git status";
     ga = "git add";
     gc = "git commit";
@@ -54,7 +55,7 @@
   home.packages = with pkgs; [
     coreutils ffmpeg neovim tmux direnv
     starship fzf eza bat ripgrep fd tree jq curl
-    gh lazygit btop zoxide
+    gh lazygit btop zoxide p7zip
     clang cmake ninja nodejs_20 yarn typescript python3 uv bun
     lua-language-server nodePackages.typescript-language-server pyright
     clang-tools jdt-language-server kotlin-language-server

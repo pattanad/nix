@@ -1,7 +1,7 @@
 { config, pkgs, ... }: {
   imports = [ ./home-shared.nix ];
 
-  home.packages = with pkgs; [ wezterm ];
+  home.packages = with pkgs; [ wezterm imagemagick ];
 
   home.shellAliases = {
     reload = "sudo darwin-rebuild switch --flake ~/.config/nixpkgs && ~/.local/bin/update-nix-context.sh";
