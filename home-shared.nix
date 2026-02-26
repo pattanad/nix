@@ -61,8 +61,13 @@
     jdt-language-server kotlin-language-server
   ];
 
-  home.file.".kiro/settings/cli.json".source = ./kiro/settings/cli.json;
-  home.file.".kiro/agents/encore.json".source = ./kiro/agents/encore.json;
+  home.activation.kiroConfig = config.lib.dag.entryAfter [ "writeBoundary" ] ''
+    mkdir -p ~/.kiro/settings ~/.kiro/agents
+    cp -f ${./kiro/settings/cli.json} ~/.kiro/settings/cli.json
+    chmod 644 ~/.kiro/settings/cli.json
+    cp -f ${./kiro/agents/encore.json} ~/.kiro/agents/encore.json
+    chmod 644 ~/.kiro/agents/encore.json
+  '';
 
   programs.git = {
     enable = true;
