@@ -93,6 +93,26 @@
     '';
   };
 
+  home.activation.kiroSkillsAgent = config.lib.dag.entryAfter [ "kiroConfig" ] ''
+    cat > ~/.kiro/agents/skills.json << 'EOF'
+{
+  "name": "skills",
+  "description": "Load and execute agent skills on demand using SkillsTool.",
+  "prompt": "You have access to SkillsTool. When asked to load a skill, invoke SkillsTool with the skill name immediately. Do not search the filesystem.",
+  "tools": ["@builtin", "@builder-mcp/SkillsTool"],
+  "allowedTools": ["@builder-mcp/SkillsTool"],
+  "mcpServers": {
+    "builder-mcp": {
+      "command": "builder-mcp",
+      "args": ["--include-tools", "SkillsTool", "--skill-paths", "/Users/pattanad/.aim/skills/FlaxAgentSkills,/Users/pattanad/.aim/skills/local,/Users/pattanad/.aim/skills/AmazonBuilderCoreAISkillSet", "--skill-name-filter", "*"]
+    }
+  },
+  "useLegacyMcpJson": false
+}
+EOF
+    chmod 644 ~/.kiro/agents/skills.json
+  '';
+
   home.activation.aliasApplications = ''
     echo "Linking applications..."
     if [ -d ~/.nix-profile/Applications ]; then

@@ -69,8 +69,6 @@
     chmod 644 ~/.kiro/settings/mcp.json
     cp -f ${./kiro/agents/encore.json} ~/.kiro/agents/encore.json
     chmod 644 ~/.kiro/agents/encore.json
-    cp -f ${./kiro/agents/skills.json} ~/.kiro/agents/skills.json
-    chmod 644 ~/.kiro/agents/skills.json
   '';
 
   programs.git = {
