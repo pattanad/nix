@@ -1,11 +1,9 @@
 {
   "name": "encore",
   "description": "",
-  "prompt": null,
+  "prompt": "To load or invoke a skill, always delegate to the 'skills' agent using use_subagent. Never search for skills locally. Example: use_subagent with agent_name='skills' and query='load the <skill-name> skill'.",
   "mcpServers": {},
-  "tools": [
-    "*"
-  ],
+  "tools": ["@builtin", "@encore-mcp", "@builder-mcp/ReadInternalWebsites", "@builder-mcp/InternalSearch", "@builder-mcp/InternalCodeSearch", "@builder-mcp/WorkspaceSearch"],
   "toolAliases": {},
   "toolsSettings": {
     "fs_write": {
@@ -15,7 +13,7 @@
       "fallbackAction": "interactive"
     }
   },
-  "allowedTools": ["fs_read", "grep", "glob", "introspect", "report_issue", "todo_list", "use_aws", "use_subagent", "web_fetch", "web_search", "Delegate", "WorkspaceSearch", "@builder-mcp/ReadInternalWebsites", "@builder-mcp/InternalSearch", "@builder-mcp/SkillsTool", "@builder-mcp/InternalCodeSearch", "@builder-mcp/BrazilBuildAnalyzerTool"],
+  "allowedTools": ["fs_read", "grep", "glob", "introspect", "report_issue", "todo_list", "use_aws", "use_subagent", "web_fetch", "web_search", "Delegate", "WorkspaceSearch", "@builder-mcp/ReadInternalWebsites", "@builder-mcp/InternalSearch", "@builder-mcp/InternalCodeSearch"],
   "resources": [
     "file://AGENTS.md",
     "file://README.md"
@@ -23,7 +21,7 @@
   "hooks": {
     "agentSpawn": [
       {
-        "command": "cat ~/.nix-environment-context.md; echo; echo '## Runbooks'; for f in ~/.local/share/runbooks/*.md; do [ -f \"$f\" ] && echo \"### $(basename \"$f\" .md)\" && cat \"$f\" && echo; done",
+        "command": "cat ~/.nix-environment-context.md; echo; echo '## Runbooks'; shopt -s nullglob; for f in ~/.local/share/runbooks/*.md; do echo \"### $(basename \"$f\" .md)\" && cat \"$f\" && echo; done",
         "cache_ttl_seconds": 3600
       }
     ]

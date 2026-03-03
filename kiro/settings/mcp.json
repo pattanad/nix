@@ -1,0 +1,62 @@
+{
+  "mcpServers": {
+    "builder-mcp": {
+      "command": "builder-mcp",
+      "args": [],
+      "env": {
+        "TOOL_PERSONALIZATION_ENABLED": "true",
+        "TOOL_PERSONALIZATION_ROLLOUT_PERCENTAGE": "100",
+        "TOOL_PERSONALIZATION_TRAINING_DAYS": "0",
+        "TOOL_PERSONALIZATION_MIN_EXECUTIONS": "0"
+      },
+      "disabledTools": [
+        "CreatePackage",
+        "SearchAcronymCentral",
+        "SimAddComment",
+        "ReadRemoteTestRun",
+        "RunIntegrationTest",
+        "BrazilPackageBuilderAnalyzerTool",
+        "CrCheckout",
+        "TaskeiGetTask",
+        "TaskeiGetRooms",
+        "TaskeiGetRoomResources",
+        "TaskeiListTasks",
+        "TaskeiUpdateTask",
+        "TaskeiCreateTask",
+        "MechanicDiscoverTools",
+        "MechanicDescribeTool",
+        "MechanicRunTool",
+        "MechanicSetUserInput",
+        "WorkspaceGitDetails",
+        "CRRevisionCreator",
+        "GKAnalyzeVersionSet",
+        "CheckFilepathForCAZ",
+        "OncallReadActions",
+        "GetDogmaClassification",
+        "GetDogmaRecommendations",
+        "TicketingReadActions",
+        "TicketingWriteActions",
+        "GetPipelinesRelevantToUser",
+        "GetPipelineHealth",
+        "GetPipelineDetails",
+        "BarristerEvaluationWorkflow",
+        "GetSasRisks",
+        "GetSasCampaigns",
+        "ApolloReadActions",
+        "SearchSoftwareRecommendations",
+        "GetSoftwareRecommendation",
+        "QuipEditor",
+        "GetPolicyEngineRisk",
+        "GetPolicyEngineDashboard",
+        "ThirdPartyAnalysisGateway",
+        "ToolReactivationTool"
+      ],
+      "autoApprove": [
+        "InternalSearch",
+        "ReadInternalWebsites",
+        "InternalCodeSearch",
+        "WorkspaceSearch"
+      ]
+    }
+  }
+}

@@ -53,7 +53,7 @@
   };
 
   home.packages = with pkgs; [
-    coreutils ffmpeg neovim tmux direnv
+    coreutils ffmpeg neovim tmux direnv xclip
     starship fzf eza bat ripgrep fd tree jq curl
     gh lazygit btop zoxide p7zip
     cmake ninja nodejs_20 yarn typescript python3 uv bun
@@ -65,8 +65,12 @@
     mkdir -p ~/.kiro/settings ~/.kiro/agents
     cp -f ${./kiro/settings/cli.json} ~/.kiro/settings/cli.json
     chmod 644 ~/.kiro/settings/cli.json
+    cp -f ${./kiro/settings/mcp.json} ~/.kiro/settings/mcp.json
+    chmod 644 ~/.kiro/settings/mcp.json
     cp -f ${./kiro/agents/encore.json} ~/.kiro/agents/encore.json
     chmod 644 ~/.kiro/agents/encore.json
+    cp -f ${./kiro/agents/skills.json} ~/.kiro/agents/skills.json
+    chmod 644 ~/.kiro/agents/skills.json
   '';
 
   programs.git = {
@@ -157,8 +161,32 @@
     baseIndex = 1;
     escapeTime = 0;
     historyLimit = 50000;
-    
+    terminal = "tmux-256color";
+    focusEvents = true;
+
+    plugins = with pkgs.tmuxPlugins; [
+      resurrect
+      {
+        plugin = continuum;
+        extraConfig = ''
+          set -g @continuum-restore 'on'
+          set -g @continuum-save-interval '10'
+        '';
+      }
+      {
+        plugin = catppuccin;
+        extraConfig = ''
+          set -g @catppuccin_flavor 'mocha'
+          set -g @catppuccin_window_status_style 'rounded'
+          set -g status-left ""
+          set -g status-right "#{E:@catppuccin_status_session} #{E:@catppuccin_status_date_time}"
+          set -g @catppuccin_date_time_text " %d/%m %H:%M"
+        '';
+      }
+    ];
+
     extraConfig = ''
+      set -ga terminal-overrides ",*256col*:Tc"
       bind r source-file ~/.config/tmux/tmux.conf \; display "Config reloaded!"
       bind | split-window -h -c "#{pane_current_path}"
       bind - split-window -v -c "#{pane_current_path}"
@@ -171,22 +199,9 @@
       bind -r K resize-pane -U 5
       bind -r L resize-pane -R 5
       bind-key -T copy-mode-vi v send-keys -X begin-selection
-      bind-key -T copy-mode-vi y send-keys -X copy-pipe-and-cancel "pbcopy"
+      bind-key -T copy-mode-vi y send-keys -X copy-pipe-and-cancel "xclip -selection clipboard"
       bind-key -T copy-mode-vi r send-keys -X rectangle-toggle
       bind c new-window -c "#{pane_current_path}"
-      set -g status-position bottom
-      set -g status-bg colour234
-      set -g status-fg colour137
-      set -g status-left ""
-      set -g status-right "#[fg=colour233,bg=colour241,bold] %d/%m #[fg=colour233,bg=colour245,bold] %H:%M:%S "
-      set -g status-right-length 50
-      set -g status-left-length 20
-      setw -g window-status-current-format " #I#[fg=colour250]:#[fg=colour255]#W#[fg=colour50]#F "
-      setw -g window-status-format " #I#[fg=colour237]:#[fg=colour250]#W#[fg=colour244]#F "
-      set -g pane-border-style fg=colour238
-      set -g pane-active-border-style fg=colour51
-      set -g default-terminal "screen-256color"
-      set -ga terminal-overrides ",*256col*:Tc"
     '';
   };
 }

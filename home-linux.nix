@@ -9,6 +9,6 @@
   };
 
   programs.zsh.initContent = ''
-    export PATH=$HOME/.local/bin:$HOME/.toolbox/bin:/usr/bin:/usr/local/bin:$PATH
+    export PATH=$HOME/.nix-profile/bin:$HOME/.local/bin:$HOME/.toolbox/bin:/usr/bin:/usr/local/bin:$PATH
   '';
 }
