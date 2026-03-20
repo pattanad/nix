@@ -26,6 +26,7 @@
     edit-config = "nvim ~/.config/nixpkgs/flake.nix";
     k = "kiro-cli";
     kt = "kiro-cli chat --tui";
+    ka = "kiro-cli chat -a";
     # Brazil
     bb = "brazil-build";
     bba = "brazil-build apollo-pkg";
