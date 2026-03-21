@@ -11,9 +11,12 @@
     },
     "write": {
       "fallbackAction": "interactive"
+    },
+    "execute_bash": {
+      "autoAllowReadonly": true
     }
   },
-  "allowedTools": ["fs_read", "grep", "glob", "introspect", "report_issue", "todo_list", "use_aws", "use_subagent", "web_fetch", "web_search", "Delegate", "WorkspaceSearch", "@builder-mcp/ReadInternalWebsites", "@builder-mcp/InternalSearch", "@builder-mcp/InternalCodeSearch"],
+  "allowedTools": ["fs_read", "fs_write", "write", "execute_bash", "code", "grep", "glob", "introspect", "report_issue", "todo_list", "use_aws", "use_subagent", "web_fetch", "web_search", "Delegate", "WorkspaceSearch", "@builder-mcp/ReadInternalWebsites", "@builder-mcp/InternalSearch", "@builder-mcp/InternalCodeSearch", "@encore-mcp/assume_persona"],
   "resources": [
     "file://AGENTS.md",
     "file://README.md"
