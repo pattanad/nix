@@ -14,9 +14,13 @@
     },
     "execute_bash": {
       "autoAllowReadonly": true
+    },
+    "subagent": {
+      "availableAgents": ["*"],
+      "trustedAgents": ["*"]
     }
   },
-  "allowedTools": ["fs_read", "fs_write", "write", "execute_bash", "code", "grep", "glob", "introspect", "report_issue", "todo_list", "use_aws", "use_subagent", "web_fetch", "web_search", "Delegate", "WorkspaceSearch", "@builder-mcp/ReadInternalWebsites", "@builder-mcp/InternalSearch", "@builder-mcp/InternalCodeSearch", "@encore-mcp/assume_persona"],
+  "allowedTools": ["fs_read", "fs_write", "write", "execute_bash", "code", "grep", "glob", "ls", "introspect", "knowledge", "imageRead", "report_issue", "todo_list", "use_aws", "use_subagent", "web_fetch", "web_search", "Delegate", "WorkspaceSearch", "@builder-mcp/ReadInternalWebsites", "@builder-mcp/InternalSearch", "@builder-mcp/InternalCodeSearch", "@encore-mcp/assume_persona"],
   "resources": [
     "file://AGENTS.md",
     "file://README.md"
