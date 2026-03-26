@@ -2,6 +2,8 @@
   "chat.defaultAgent": "encore",
   "chat.defaultModel": "claude-opus-4.6",
   "chat.enableTodoList": true,
+  "chat.enableSubagent": true,
+  "chat.enableDelegate": true,
   "mcp.loadedBefore": true,
   "chat.enableKnowledge": true,
   "chat.enableContextUsageIndicator": true,
