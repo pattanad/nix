@@ -21,7 +21,13 @@
           nixpkgs.hostPlatform = "aarch64-darwin";
           nix.settings.experimental-features = [ "nix-command" "flakes" ];
           programs.zsh.enable = true;
+          system.primaryUser = "pattanad";
           system.stateVersion = 5;
+          homebrew = {
+            enable = true;
+            casks = [ "sublime-text" ];
+            onActivation.cleanup = "none";
+          };
         })
         home-manager.darwinModules.home-manager
         {
