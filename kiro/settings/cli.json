@@ -1,5 +1,5 @@
 {
-  "chat.defaultAgent": "encore",
+  "chat.defaultAgent": "encore-agent",
   "chat.defaultModel": "claude-opus-4.6",
   "chat.enableTodoList": true,
   "chat.enableSubagent": true,
